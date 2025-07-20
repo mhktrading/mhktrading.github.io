@@ -15,6 +15,8 @@
             --dark: #212529;
             --gray: #6c757d;
             --light-gray: #e9ecef;
+            --notice-red: #d32f2f;
+            --notice-light: #ffebee;
         }
         
         * {
@@ -75,6 +77,14 @@
         .btn-outline:hover {
             background: var(--accent);
             color: white;
+        }
+        
+        .btn-notice {
+            background: var(--notice-red);
+        }
+        
+        .btn-notice:hover {
+            background: #b71c1c;
         }
         
         .section {
@@ -211,6 +221,146 @@
             font-size: 1.5rem;
             cursor: pointer;
             color: var(--primary);
+        }
+        
+        /* Notice Section */
+        .notice {
+            background-color: var(--notice-light);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .notice::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: var(--notice-red);
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+        
+        .notice::after {
+            content: "";
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 250px;
+            height: 250px;
+            background: var(--notice-red);
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+        
+        .notice-content {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .notice-title {
+            color: var(--notice-red);
+            text-align: center;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .notice-title i {
+            font-size: 2rem;
+        }
+        
+        .notice-header {
+            background: var(--notice-red);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        
+        .notice-details {
+            margin-bottom: 30px;
+        }
+        
+        .notice-section {
+            margin-bottom: 25px;
+        }
+        
+        .notice-section h3 {
+            color: var(--notice-red);
+            margin-bottom: 12px;
+            border-bottom: 2px solid var(--notice-light);
+            padding-bottom: 8px;
+            font-size: 1.3rem;
+        }
+        
+        .notice-list {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        
+        .notice-list li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .notice-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--notice-red);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .important-note {
+            background: #fff8e1;
+            border-left: 4px solid var(--accent);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .interview-info {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border-left: 4px solid #2196f3;
+        }
+        
+        .deadline {
+            text-align: center;
+            font-weight: 700;
+            color: var(--notice-red);
+            font-size: 1.2rem;
+            margin: 25px 0;
+            padding: 15px;
+            background: rgba(211, 47, 47, 0.1);
+            border-radius: 8px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
         }
         
         /* Hero Section */
@@ -623,13 +773,21 @@
                 font-size: 2rem;
             }
             
-            /* Adjust logo size on mobile */
             .logo {
                 height: 70px;
             }
             
             .logo-text h1 {
                 font-size: 1.5rem;
+            }
+            
+            .notice-content {
+                padding: 25px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
             }
         }
         
@@ -658,6 +816,11 @@
             .logo-text p {
                 font-size: 0.8rem;
             }
+            
+            .notice-title {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -668,7 +831,6 @@
             <nav class="navbar">
                 <div class="logo-container">
                     <div class="logo">
-                        <!-- Circular logo -->
                         <img src="logo.jpg" alt="NEW M.H.K. TRADING Logo">
                     </div>
                     <div class="logo-text">
@@ -679,8 +841,9 @@
                 
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
+                    <li><a href="#notice">Notice</a></li>
                     <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
                     <li><a href="#products">Products</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -691,6 +854,64 @@
             </nav>
         </div>
     </header>
+
+    <!-- Notice Section -->
+    <section class="section notice" id="notice">
+        <div class="container">
+            <div class="notice-content">
+                <div class="notice-title">
+                    <i class="fas fa-bullhorn"></i>
+                    <h2 style="font-family: kalpurush;">জাপানে কর্মসংস্থানের সুযোগ</h2>
+                </div>
+                
+                <div class="notice-header" style="font-family: kalpurush;">
+                    জাপানে SSW (Specified Skilled Worker) ভিসার সুযোগ
+                </div>
+                
+                <div class="notice-details">
+                    <div class="notice-section">
+                        <h3 style="font-family: kalpurush;">কর্মক্ষেত্র</h3>
+                        <p style="font-family: kalpurush;">জাপানের বিভিন্ন খাতে (কারখানা, কৃষি, নার্সিং ইত্যাদি) দক্ষ কর্মী প্রেরণের কার্যক্রম চলছে।</p>
+                    </div>
+                    
+                    <div class="notice-section">
+                        <h3 style="font-family: kalpurush;">আবশ্যক যোগ্যতা</h3>
+                        <ul class="notice-list">
+                            <li style="font-family: kalpurush;">শিক্ষাগত যোগ্যতা: SSC পাস বা সমমান</li>
+                            <li style="font-family: kalpurush;">বয়স: ১৮-৩৫ বছর</li>
+                            <li style="font-family: kalpurush;">ভাষাগত দক্ষতা: জাপানি ভাষায় N5/N4 পাস থাকতে হবে</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="important-note">
+                        <h3 style="font-family: kalpurush;">বিঃদ্রঃ</h3>
+                        <p style="font-family: kalpurush;">যাদের এখনো N5, JFT নেই, তারা আমাদের পরিচালিত জাপানি ভাষা কোর্সে ভর্তি হতে পারবেন। কোর্স শেষে পরীক্ষায় সফলভাবে উত্তীর্ণ প্রার্থীদের নিয়োগে অগ্রাধিকার দেওয়া হবে।</p>
+                    </div>
+                    
+                    <div class="interview-info">
+                        <h3 style="font-family: kalpurush;">ইন্টারভিউ তথ্য</h3>
+                        <p style="font-family: kalpurush;">আগ্রহী প্রার্থীদের আগামী ২৬ জুলাই প্রাথমিক ইন্টারভিউ অনুষ্ঠিত হবে।</p>
+                        <p style="font-family: kalpurush;">ইন্টারভিউতে অবশ্যই পাসপোর্ট ও প্রফেশনাল সিভি সঙ্গে আনতে হবে।</p>
+                    </div>
+                    
+                    <div class="deadline" style="font-family: kalpurush;">
+                        <i class="fas fa-calendar-day"></i> ইন্টারভিউ তারিখ: ২৬ জুলাই
+                    </div>
+                    
+                    <div class="notice-section">
+                        <h3 style="font-family: kalpurush;">আবেদন পদ্ধতি</h3>
+                        <p style="font-family: kalpurush;">আপনার প্রফেশনাল সিভি আমাদের মেইল/ইনবক্স করুন।</p>
+                        <p style="font-family: kalpurush;">ইমেইল: mhktrading01@gmail.com</p>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <a href="#contact" class="btn btn-notice">Apply Now</a>
+                    <a href="mailto:mhktrading01@gmail.com" class="btn btn-outline">Send CV</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
@@ -739,7 +960,6 @@
                     <p>We provide bulk distribution services to retailers and businesses with competitive pricing and reliable supply chains.</p>
                 </div>
                 
-                <!-- New Travel Agency Service -->
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-plane-departure"></i>
@@ -932,8 +1152,9 @@
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
                         <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#notice">Notice</a></li>
                         <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About Us</a></li>
                         <li><a href="#products">Products</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
@@ -946,6 +1167,7 @@
                         <li><a href="#">Export Management</a></li>
                         <li><a href="#">Wholesale Distribution</a></li>
                         <li><a href="#">Travel Agency</a></li>
+                        <li><a href="#">Visa Processing</a></li>
                         <li><a href="#">Customs Clearance</a></li>
                     </ul>
                 </div>
